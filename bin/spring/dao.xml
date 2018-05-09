@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans default-autowire="no">
+
+	<bean id="systemDao1" class="jp.co.rakuten_sec.exportfile.dao.GenericDaoImpl" singleton="true">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory01" />
+	</bean>
+	<bean id="systemDao2" class="jp.co.rakuten_sec.exportfile.dao.GenericDaoImpl" singleton="true">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory02" />
+	</bean>
+	<bean id="systemDao3" class="jp.co.rakuten_sec.exportfile.dao.GenericDaoImpl" singleton="true">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory03" />
+	</bean>
+	<bean id="systemDao4" class="jp.co.rakuten_sec.exportfile.dao.GenericDaoImpl" singleton="true">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory014" />
+	</bean>
+	<bean id="systemDao5" class="jp.co.rakuten_sec.exportfile.dao.GenericDaoImpl" singleton="true">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory05" />
+	</bean>
+	<bean id="systemDao6" class="jp.co.rakuten_sec.exportfile.dao.GenericDaoImpl" singleton="true">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory06" />
+	</bean>
+	<bean id="systemDaoMap" class="jp.co.rakuten_sec.exportfile.dao.DaoListImpl" singleton="true">
+		<property name="daoMap">
+			<map>
+				<entry key="1" value-ref="systemDao1" />
+				<entry key="2" value-ref="systemDao2" />
+				<entry key="3" value-ref="systemDao3" />
+				<entry key="4" value-ref="systemDao4" />
+				<entry key="5" value-ref="systemDao5" />
+				<entry key="6" value-ref="systemDao6" />
+			</map>
+		</property>
+	</bean>
+	
+	<bean id="bondOrdHistoryDao" class=" jp.co.rakuten_sec.exportfile.dao.BondOrdHistoryDaoImpl" singleton="true">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory01" />
+	</bean>
+	
+	<bean id="bondOrdHistoryDaoList1" class="jp.co.rakuten_sec.exportfile.dao.DaoListImpl" singleton="true">
+		<property name="daoList">
+			<list>
+				<ref bean="bondOrdHistoryDao1" />
+				<ref bean="bondOrdHistoryDao2" />
+				<ref bean="bondOrdHistoryDao3" />
+				<ref bean="bondOrdHistoryDao4" />
+				<ref bean="bondOrdHistoryDao5" />
+				<ref bean="bondOrdHistoryDao6" />
+ 			</list>
+		</property>
+	</bean>
+	<bean id="bondOrdHistoryDao1" class="jp.co.rakuten_sec.exportfile.dao.BondOrdHistoryDaoImpl" singleton="true">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory01" />
+		<!-- <property name="branchCd" value="701" />
+		<property name="dbId" value="1" /> -->
+	</bean>
+	<bean id="bondOrdHistoryDao2" class="jp.co.rakuten_sec.exportfile.dao.BondOrdHistoryDaoImpl" singleton="true">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory02" />
+		<!-- <property name="branchCd" value="701" />
+		<property name="dbId" value="2" /> -->
+	</bean>
+	<bean id="bondOrdHistoryDao3" class="jp.co.rakuten_sec.exportfile.dao.BondOrdHistoryDaoImpl" singleton="true">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory03" />
+		<!-- <property name="branchCd" value="702" />
+		<property name="dbId" value="3" /> -->
+	</bean>
+	<bean id="bondOrdHistoryDao4" class="jp.co.rakuten_sec.exportfile.dao.BondOrdHistoryDaoImpl" singleton="true">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory04" />
+		<!-- <property name="branchCd" value="703" />
+		<property name="dbId" value="4" /> -->
+	</bean>
+	<bean id="bondOrdHistoryDao5" class="jp.co.rakuten_sec.exportfile.dao.BondOrdHistoryDaoImpl" singleton="true">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory05" />
+		<!-- <property name="branchCd" value="704" />
+		<property name="dbId" value="5" /> -->
+	</bean>
+	<bean id="bondOrdHistoryDao6" class="jp.co.rakuten_sec.exportfile.dao.BondOrdHistoryDaoImpl" singleton="true">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory06" />
+		<!-- <property name="branchCd" value="705" />
+		<property name="dbId" value="6" /> -->
+	</bean>
+</beans>

@@ -1,0 +1,610 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="bondOrdHistoryMapper" >
+  <resultMap id="BaseResultMap" type="jp.co.rakuten_sec.exportfile.entity.BondOrdHistory" >
+    <id column="PROC_DT" property="procDt" jdbcType="DATE" />
+    <id column="ORD_NO" property="ordNo" jdbcType="DECIMAL" />
+    <result column="TRD_TYP_CD" property="trdTypCd" jdbcType="DECIMAL" />
+    <result column="ORD_STS_CD" property="ordStsCd" jdbcType="DECIMAL" />
+    <result column="HULFT_SEND_FLG" property="hulftSendFlg" jdbcType="DECIMAL" />
+    <result column="FACE_PRICE" property="facePrice" jdbcType="DECIMAL" />
+    <result column="AMOUNT" property="amount" jdbcType="DECIMAL" />
+    <result column="PASS_INTEREST" property="passInterest" jdbcType="DECIMAL" />
+    <result column="TAX" property="tax" jdbcType="DECIMAL" />
+    <result column="BALANCE" property="balance" jdbcType="DECIMAL" />
+    <result column="TRD_TAX" property="trdTax" jdbcType="DECIMAL" />
+    <result column="COMMISSION_AMOUNT" property="commissionAmount" jdbcType="DECIMAL" />
+    <result column="BOND_TRD_TYP" property="bondTrdTyp" jdbcType="DECIMAL" />
+    <result column="TRADE_RATE" property="tradeRate" jdbcType="DECIMAL" />
+    <result column="REF_PRICE" property="refPrice" jdbcType="DECIMAL" />
+    <result column="REF_AMOUNT" property="refAmount" jdbcType="DECIMAL" />
+    <result column="CNCL_CORR_KBN" property="cnclCorrKbn" jdbcType="DECIMAL" />
+    <result column="DSCR_CD" property="dscrCd" jdbcType="CHAR" />
+    <result column="APPL_DT" property="applDt" jdbcType="DATE" />
+    <result column="INP_TM" property="inpTm" jdbcType="DATE" />
+    <result column="RCV_NO" property="rcvNo" jdbcType="DECIMAL" />
+    <result column="INPUT_ROUTE" property="inputRoute" jdbcType="DECIMAL" />
+    <result column="AGENT" property="agent" jdbcType="VARCHAR" />
+    <result column="EXEC_PRICE_INP_TM" property="execPriceInpTm" jdbcType="DATE" />
+    <result column="EXEC_TM" property="execTm" jdbcType="DATE" />
+    <result column="LATST_CNCL_CORR_KBN" property="latstCnclCorrKbn" jdbcType="DECIMAL" />
+    <result column="LATST_INP_TM" property="latstInpTm" jdbcType="DATE" />
+    <result column="LATST_INPUT_ROUTE" property="latstInputRoute" jdbcType="DECIMAL" />
+    <result column="LATST_AGENT" property="latstAgent" jdbcType="VARCHAR" />
+    <result column="HULFT_SEND_DT" property="hulftSendDt" jdbcType="DATE" />
+    <result column="DATA_CD" property="dataCd" jdbcType="CHAR" />
+    <result column="BRANCH_CD" property="branchCd" jdbcType="DECIMAL" />
+    <result column="CLIENT_CD" property="clientCd" jdbcType="DECIMAL" />
+    <result column="SALESMAN_CD" property="salesmanCd" jdbcType="DECIMAL" />
+    <result column="TRADE_KBN" property="tradeKbn" jdbcType="DECIMAL" />
+    <result column="SONAR_TRD_CD" property="sonarTrdCd" jdbcType="DECIMAL" />
+    <result column="TRADE_DT" property="tradeDt" jdbcType="DATE" />
+    <result column="VALUE_DT" property="valueDt" jdbcType="DATE" />
+    <result column="NUM_CD" property="numCd" jdbcType="CHAR" />
+    <result column="SONAR_DSCR_CD" property="sonarDscrCd" jdbcType="CHAR" />
+    <result column="DSCR_NM" property="dscrNm" jdbcType="VARCHAR" />
+    <result column="REDEMPT_DT" property="redemptDt" jdbcType="DATE" />
+    <result column="COUPON" property="coupon" jdbcType="DECIMAL" />
+    <result column="COUPON_KBN" property="couponKbn" jdbcType="CHAR" />
+    <result column="EXEC_PRICE" property="execPrice" jdbcType="DECIMAL" />
+    <result column="INSIDER_FLG" property="insiderFlg" jdbcType="DECIMAL" />
+    <result column="INSIDER_DSCR_CD" property="insiderDscrCd" jdbcType="CHAR" />
+    <result column="SPA_KBN" property="spaKbn" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    PROC_DT, ORD_NO, TRD_TYP_CD, ORD_STS_CD, HULFT_SEND_FLG, FACE_PRICE, AMOUNT, PASS_INTEREST, 
+    TAX, BALANCE, TRD_TAX, COMMISSION_AMOUNT, BOND_TRD_TYP, TRADE_RATE, REF_PRICE, REF_AMOUNT, 
+    CNCL_CORR_KBN, DSCR_CD, APPL_DT, INP_TM, RCV_NO, INPUT_ROUTE, AGENT, EXEC_PRICE_INP_TM, 
+    EXEC_TM, LATST_CNCL_CORR_KBN, LATST_INP_TM, LATST_INPUT_ROUTE, LATST_AGENT, HULFT_SEND_DT, 
+    DATA_CD, BRANCH_CD, CLIENT_CD, SALESMAN_CD, TRADE_KBN, SONAR_TRD_CD, TRADE_DT, VALUE_DT, 
+    NUM_CD, SONAR_DSCR_CD, DSCR_NM, REDEMPT_DT, COUPON, COUPON_KBN, EXEC_PRICE, INSIDER_FLG, 
+    INSIDER_DSCR_CD, SPA_KBN
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="jp.co.rakuten_sec.exportfile.entity.BondOrdHistoryKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from BOND_ORD_HISTORY
+    where PROC_DT = #{procDt,jdbcType=DATE}
+      and ORD_NO = #{ordNo,jdbcType=DECIMAL}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from BOND_ORD_HISTORY
+  </select>
+  <select id="selectOne" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from BOND_ORD_HISTORY where ORD_NO = #{ordNo,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="jp.co.rakuten_sec.exportfile.entity.BondOrdHistoryKey" >
+    delete from BOND_ORD_HISTORY
+    where PROC_DT = #{procDt,jdbcType=DATE}
+      and ORD_NO = #{ordNo,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="jp.co.rakuten_sec.exportfile.entity.BondOrdHistory" >
+    insert into BOND_ORD_HISTORY (PROC_DT, ORD_NO, TRD_TYP_CD, 
+      ORD_STS_CD, HULFT_SEND_FLG, FACE_PRICE, 
+      AMOUNT, PASS_INTEREST, TAX, 
+      BALANCE, TRD_TAX, COMMISSION_AMOUNT, 
+      BOND_TRD_TYP, TRADE_RATE, REF_PRICE, 
+      REF_AMOUNT, CNCL_CORR_KBN, DSCR_CD, 
+      APPL_DT, INP_TM, RCV_NO, INPUT_ROUTE, 
+      AGENT, EXEC_PRICE_INP_TM, EXEC_TM, 
+      LATST_CNCL_CORR_KBN, LATST_INP_TM, LATST_INPUT_ROUTE, 
+      LATST_AGENT, HULFT_SEND_DT, DATA_CD, 
+      BRANCH_CD, CLIENT_CD, SALESMAN_CD, 
+      TRADE_KBN, SONAR_TRD_CD, TRADE_DT, 
+      VALUE_DT, NUM_CD, SONAR_DSCR_CD, 
+      DSCR_NM, REDEMPT_DT, COUPON, 
+      COUPON_KBN, EXEC_PRICE, INSIDER_FLG, 
+      INSIDER_DSCR_CD, SPA_KBN)
+    values (#{procDt,jdbcType=DATE}, #{ordNo,jdbcType=DECIMAL}, #{trdTypCd,jdbcType=DECIMAL}, 
+      #{ordStsCd,jdbcType=DECIMAL}, #{hulftSendFlg,jdbcType=DECIMAL}, #{facePrice,jdbcType=DECIMAL}, 
+      #{amount,jdbcType=DECIMAL}, #{passInterest,jdbcType=DECIMAL}, #{tax,jdbcType=DECIMAL}, 
+      #{balance,jdbcType=DECIMAL}, #{trdTax,jdbcType=DECIMAL}, #{commissionAmount,jdbcType=DECIMAL}, 
+      #{bondTrdTyp,jdbcType=DECIMAL}, #{tradeRate,jdbcType=DECIMAL}, #{refPrice,jdbcType=DECIMAL}, 
+      #{refAmount,jdbcType=DECIMAL}, #{cnclCorrKbn,jdbcType=DECIMAL}, #{dscrCd,jdbcType=CHAR}, 
+      #{applDt,jdbcType=DATE}, #{inpTm,jdbcType=DATE}, #{rcvNo,jdbcType=DECIMAL}, #{inputRoute,jdbcType=DECIMAL}, 
+      #{agent,jdbcType=VARCHAR}, #{execPriceInpTm,jdbcType=DATE}, #{execTm,jdbcType=DATE}, 
+      #{latstCnclCorrKbn,jdbcType=DECIMAL}, #{latstInpTm,jdbcType=DATE}, #{latstInputRoute,jdbcType=DECIMAL}, 
+      #{latstAgent,jdbcType=VARCHAR}, #{hulftSendDt,jdbcType=DATE}, #{dataCd,jdbcType=CHAR}, 
+      #{branchCd,jdbcType=DECIMAL}, #{clientCd,jdbcType=DECIMAL}, #{salesmanCd,jdbcType=DECIMAL}, 
+      #{tradeKbn,jdbcType=DECIMAL}, #{sonarTrdCd,jdbcType=DECIMAL}, #{tradeDt,jdbcType=DATE}, 
+      #{valueDt,jdbcType=DATE}, #{numCd,jdbcType=CHAR}, #{sonarDscrCd,jdbcType=CHAR}, 
+      #{dscrNm,jdbcType=VARCHAR}, #{redemptDt,jdbcType=DATE}, #{coupon,jdbcType=DECIMAL}, 
+      #{couponKbn,jdbcType=CHAR}, #{execPrice,jdbcType=DECIMAL}, #{insiderFlg,jdbcType=DECIMAL}, 
+      #{insiderDscrCd,jdbcType=CHAR}, #{spaKbn,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="jp.co.rakuten_sec.exportfile.entity.BondOrdHistory" >
+    insert into BOND_ORD_HISTORY
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="procDt != null" >
+        PROC_DT,
+      </if>
+      <if test="ordNo != null" >
+        ORD_NO,
+      </if>
+      <if test="trdTypCd != null" >
+        TRD_TYP_CD,
+      </if>
+      <if test="ordStsCd != null" >
+        ORD_STS_CD,
+      </if>
+      <if test="hulftSendFlg != null" >
+        HULFT_SEND_FLG,
+      </if>
+      <if test="facePrice != null" >
+        FACE_PRICE,
+      </if>
+      <if test="amount != null" >
+        AMOUNT,
+      </if>
+      <if test="passInterest != null" >
+        PASS_INTEREST,
+      </if>
+      <if test="tax != null" >
+        TAX,
+      </if>
+      <if test="balance != null" >
+        BALANCE,
+      </if>
+      <if test="trdTax != null" >
+        TRD_TAX,
+      </if>
+      <if test="commissionAmount != null" >
+        COMMISSION_AMOUNT,
+      </if>
+      <if test="bondTrdTyp != null" >
+        BOND_TRD_TYP,
+      </if>
+      <if test="tradeRate != null" >
+        TRADE_RATE,
+      </if>
+      <if test="refPrice != null" >
+        REF_PRICE,
+      </if>
+      <if test="refAmount != null" >
+        REF_AMOUNT,
+      </if>
+      <if test="cnclCorrKbn != null" >
+        CNCL_CORR_KBN,
+      </if>
+      <if test="dscrCd != null" >
+        DSCR_CD,
+      </if>
+      <if test="applDt != null" >
+        APPL_DT,
+      </if>
+      <if test="inpTm != null" >
+        INP_TM,
+      </if>
+      <if test="rcvNo != null" >
+        RCV_NO,
+      </if>
+      <if test="inputRoute != null" >
+        INPUT_ROUTE,
+      </if>
+      <if test="agent != null" >
+        AGENT,
+      </if>
+      <if test="execPriceInpTm != null" >
+        EXEC_PRICE_INP_TM,
+      </if>
+      <if test="execTm != null" >
+        EXEC_TM,
+      </if>
+      <if test="latstCnclCorrKbn != null" >
+        LATST_CNCL_CORR_KBN,
+      </if>
+      <if test="latstInpTm != null" >
+        LATST_INP_TM,
+      </if>
+      <if test="latstInputRoute != null" >
+        LATST_INPUT_ROUTE,
+      </if>
+      <if test="latstAgent != null" >
+        LATST_AGENT,
+      </if>
+      <if test="hulftSendDt != null" >
+        HULFT_SEND_DT,
+      </if>
+      <if test="dataCd != null" >
+        DATA_CD,
+      </if>
+      <if test="branchCd != null" >
+        BRANCH_CD,
+      </if>
+      <if test="clientCd != null" >
+        CLIENT_CD,
+      </if>
+      <if test="salesmanCd != null" >
+        SALESMAN_CD,
+      </if>
+      <if test="tradeKbn != null" >
+        TRADE_KBN,
+      </if>
+      <if test="sonarTrdCd != null" >
+        SONAR_TRD_CD,
+      </if>
+      <if test="tradeDt != null" >
+        TRADE_DT,
+      </if>
+      <if test="valueDt != null" >
+        VALUE_DT,
+      </if>
+      <if test="numCd != null" >
+        NUM_CD,
+      </if>
+      <if test="sonarDscrCd != null" >
+        SONAR_DSCR_CD,
+      </if>
+      <if test="dscrNm != null" >
+        DSCR_NM,
+      </if>
+      <if test="redemptDt != null" >
+        REDEMPT_DT,
+      </if>
+      <if test="coupon != null" >
+        COUPON,
+      </if>
+      <if test="couponKbn != null" >
+        COUPON_KBN,
+      </if>
+      <if test="execPrice != null" >
+        EXEC_PRICE,
+      </if>
+      <if test="insiderFlg != null" >
+        INSIDER_FLG,
+      </if>
+      <if test="insiderDscrCd != null" >
+        INSIDER_DSCR_CD,
+      </if>
+      <if test="spaKbn != null" >
+        SPA_KBN,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="procDt != null" >
+        #{procDt,jdbcType=DATE},
+      </if>
+      <if test="ordNo != null" >
+        #{ordNo,jdbcType=DECIMAL},
+      </if>
+      <if test="trdTypCd != null" >
+        #{trdTypCd,jdbcType=DECIMAL},
+      </if>
+      <if test="ordStsCd != null" >
+        #{ordStsCd,jdbcType=DECIMAL},
+      </if>
+      <if test="hulftSendFlg != null" >
+        #{hulftSendFlg,jdbcType=DECIMAL},
+      </if>
+      <if test="facePrice != null" >
+        #{facePrice,jdbcType=DECIMAL},
+      </if>
+      <if test="amount != null" >
+        #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="passInterest != null" >
+        #{passInterest,jdbcType=DECIMAL},
+      </if>
+      <if test="tax != null" >
+        #{tax,jdbcType=DECIMAL},
+      </if>
+      <if test="balance != null" >
+        #{balance,jdbcType=DECIMAL},
+      </if>
+      <if test="trdTax != null" >
+        #{trdTax,jdbcType=DECIMAL},
+      </if>
+      <if test="commissionAmount != null" >
+        #{commissionAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="bondTrdTyp != null" >
+        #{bondTrdTyp,jdbcType=DECIMAL},
+      </if>
+      <if test="tradeRate != null" >
+        #{tradeRate,jdbcType=DECIMAL},
+      </if>
+      <if test="refPrice != null" >
+        #{refPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="refAmount != null" >
+        #{refAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="cnclCorrKbn != null" >
+        #{cnclCorrKbn,jdbcType=DECIMAL},
+      </if>
+      <if test="dscrCd != null" >
+        #{dscrCd,jdbcType=CHAR},
+      </if>
+      <if test="applDt != null" >
+        #{applDt,jdbcType=DATE},
+      </if>
+      <if test="inpTm != null" >
+        #{inpTm,jdbcType=DATE},
+      </if>
+      <if test="rcvNo != null" >
+        #{rcvNo,jdbcType=DECIMAL},
+      </if>
+      <if test="inputRoute != null" >
+        #{inputRoute,jdbcType=DECIMAL},
+      </if>
+      <if test="agent != null" >
+        #{agent,jdbcType=VARCHAR},
+      </if>
+      <if test="execPriceInpTm != null" >
+        #{execPriceInpTm,jdbcType=DATE},
+      </if>
+      <if test="execTm != null" >
+        #{execTm,jdbcType=DATE},
+      </if>
+      <if test="latstCnclCorrKbn != null" >
+        #{latstCnclCorrKbn,jdbcType=DECIMAL},
+      </if>
+      <if test="latstInpTm != null" >
+        #{latstInpTm,jdbcType=DATE},
+      </if>
+      <if test="latstInputRoute != null" >
+        #{latstInputRoute,jdbcType=DECIMAL},
+      </if>
+      <if test="latstAgent != null" >
+        #{latstAgent,jdbcType=VARCHAR},
+      </if>
+      <if test="hulftSendDt != null" >
+        #{hulftSendDt,jdbcType=DATE},
+      </if>
+      <if test="dataCd != null" >
+        #{dataCd,jdbcType=CHAR},
+      </if>
+      <if test="branchCd != null" >
+        #{branchCd,jdbcType=DECIMAL},
+      </if>
+      <if test="clientCd != null" >
+        #{clientCd,jdbcType=DECIMAL},
+      </if>
+      <if test="salesmanCd != null" >
+        #{salesmanCd,jdbcType=DECIMAL},
+      </if>
+      <if test="tradeKbn != null" >
+        #{tradeKbn,jdbcType=DECIMAL},
+      </if>
+      <if test="sonarTrdCd != null" >
+        #{sonarTrdCd,jdbcType=DECIMAL},
+      </if>
+      <if test="tradeDt != null" >
+        #{tradeDt,jdbcType=DATE},
+      </if>
+      <if test="valueDt != null" >
+        #{valueDt,jdbcType=DATE},
+      </if>
+      <if test="numCd != null" >
+        #{numCd,jdbcType=CHAR},
+      </if>
+      <if test="sonarDscrCd != null" >
+        #{sonarDscrCd,jdbcType=CHAR},
+      </if>
+      <if test="dscrNm != null" >
+        #{dscrNm,jdbcType=VARCHAR},
+      </if>
+      <if test="redemptDt != null" >
+        #{redemptDt,jdbcType=DATE},
+      </if>
+      <if test="coupon != null" >
+        #{coupon,jdbcType=DECIMAL},
+      </if>
+      <if test="couponKbn != null" >
+        #{couponKbn,jdbcType=CHAR},
+      </if>
+      <if test="execPrice != null" >
+        #{execPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="insiderFlg != null" >
+        #{insiderFlg,jdbcType=DECIMAL},
+      </if>
+      <if test="insiderDscrCd != null" >
+        #{insiderDscrCd,jdbcType=CHAR},
+      </if>
+      <if test="spaKbn != null" >
+        #{spaKbn,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="jp.co.rakuten_sec.exportfile.entity.BondOrdHistory" >
+    update BOND_ORD_HISTORY
+    <set >
+      <if test="trdTypCd != null" >
+        TRD_TYP_CD = #{trdTypCd,jdbcType=DECIMAL},
+      </if>
+      <if test="ordStsCd != null" >
+        ORD_STS_CD = #{ordStsCd,jdbcType=DECIMAL},
+      </if>
+      <if test="hulftSendFlg != null" >
+        HULFT_SEND_FLG = #{hulftSendFlg,jdbcType=DECIMAL},
+      </if>
+      <if test="facePrice != null" >
+        FACE_PRICE = #{facePrice,jdbcType=DECIMAL},
+      </if>
+      <if test="amount != null" >
+        AMOUNT = #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="passInterest != null" >
+        PASS_INTEREST = #{passInterest,jdbcType=DECIMAL},
+      </if>
+      <if test="tax != null" >
+        TAX = #{tax,jdbcType=DECIMAL},
+      </if>
+      <if test="balance != null" >
+        BALANCE = #{balance,jdbcType=DECIMAL},
+      </if>
+      <if test="trdTax != null" >
+        TRD_TAX = #{trdTax,jdbcType=DECIMAL},
+      </if>
+      <if test="commissionAmount != null" >
+        COMMISSION_AMOUNT = #{commissionAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="bondTrdTyp != null" >
+        BOND_TRD_TYP = #{bondTrdTyp,jdbcType=DECIMAL},
+      </if>
+      <if test="tradeRate != null" >
+        TRADE_RATE = #{tradeRate,jdbcType=DECIMAL},
+      </if>
+      <if test="refPrice != null" >
+        REF_PRICE = #{refPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="refAmount != null" >
+        REF_AMOUNT = #{refAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="cnclCorrKbn != null" >
+        CNCL_CORR_KBN = #{cnclCorrKbn,jdbcType=DECIMAL},
+      </if>
+      <if test="dscrCd != null" >
+        DSCR_CD = #{dscrCd,jdbcType=CHAR},
+      </if>
+      <if test="applDt != null" >
+        APPL_DT = #{applDt,jdbcType=DATE},
+      </if>
+      <if test="inpTm != null" >
+        INP_TM = #{inpTm,jdbcType=DATE},
+      </if>
+      <if test="rcvNo != null" >
+        RCV_NO = #{rcvNo,jdbcType=DECIMAL},
+      </if>
+      <if test="inputRoute != null" >
+        INPUT_ROUTE = #{inputRoute,jdbcType=DECIMAL},
+      </if>
+      <if test="agent != null" >
+        AGENT = #{agent,jdbcType=VARCHAR},
+      </if>
+      <if test="execPriceInpTm != null" >
+        EXEC_PRICE_INP_TM = #{execPriceInpTm,jdbcType=DATE},
+      </if>
+      <if test="execTm != null" >
+        EXEC_TM = #{execTm,jdbcType=DATE},
+      </if>
+      <if test="latstCnclCorrKbn != null" >
+        LATST_CNCL_CORR_KBN = #{latstCnclCorrKbn,jdbcType=DECIMAL},
+      </if>
+      <if test="latstInpTm != null" >
+        LATST_INP_TM = #{latstInpTm,jdbcType=DATE},
+      </if>
+      <if test="latstInputRoute != null" >
+        LATST_INPUT_ROUTE = #{latstInputRoute,jdbcType=DECIMAL},
+      </if>
+      <if test="latstAgent != null" >
+        LATST_AGENT = #{latstAgent,jdbcType=VARCHAR},
+      </if>
+      <if test="hulftSendDt != null" >
+        HULFT_SEND_DT = #{hulftSendDt,jdbcType=DATE},
+      </if>
+      <if test="dataCd != null" >
+        DATA_CD = #{dataCd,jdbcType=CHAR},
+      </if>
+      <if test="branchCd != null" >
+        BRANCH_CD = #{branchCd,jdbcType=DECIMAL},
+      </if>
+      <if test="clientCd != null" >
+        CLIENT_CD = #{clientCd,jdbcType=DECIMAL},
+      </if>
+      <if test="salesmanCd != null" >
+        SALESMAN_CD = #{salesmanCd,jdbcType=DECIMAL},
+      </if>
+      <if test="tradeKbn != null" >
+        TRADE_KBN = #{tradeKbn,jdbcType=DECIMAL},
+      </if>
+      <if test="sonarTrdCd != null" >
+        SONAR_TRD_CD = #{sonarTrdCd,jdbcType=DECIMAL},
+      </if>
+      <if test="tradeDt != null" >
+        TRADE_DT = #{tradeDt,jdbcType=DATE},
+      </if>
+      <if test="valueDt != null" >
+        VALUE_DT = #{valueDt,jdbcType=DATE},
+      </if>
+      <if test="numCd != null" >
+        NUM_CD = #{numCd,jdbcType=CHAR},
+      </if>
+      <if test="sonarDscrCd != null" >
+        SONAR_DSCR_CD = #{sonarDscrCd,jdbcType=CHAR},
+      </if>
+      <if test="dscrNm != null" >
+        DSCR_NM = #{dscrNm,jdbcType=VARCHAR},
+      </if>
+      <if test="redemptDt != null" >
+        REDEMPT_DT = #{redemptDt,jdbcType=DATE},
+      </if>
+      <if test="coupon != null" >
+        COUPON = #{coupon,jdbcType=DECIMAL},
+      </if>
+      <if test="couponKbn != null" >
+        COUPON_KBN = #{couponKbn,jdbcType=CHAR},
+      </if>
+      <if test="execPrice != null" >
+        EXEC_PRICE = #{execPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="insiderFlg != null" >
+        INSIDER_FLG = #{insiderFlg,jdbcType=DECIMAL},
+      </if>
+      <if test="insiderDscrCd != null" >
+        INSIDER_DSCR_CD = #{insiderDscrCd,jdbcType=CHAR},
+      </if>
+      <if test="spaKbn != null" >
+        SPA_KBN = #{spaKbn,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where PROC_DT = #{procDt,jdbcType=DATE}
+      and ORD_NO = #{ordNo,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="jp.co.rakuten_sec.exportfile.entity.BondOrdHistory" >
+    update BOND_ORD_HISTORY
+    set TRD_TYP_CD = #{trdTypCd,jdbcType=DECIMAL},
+      ORD_STS_CD = #{ordStsCd,jdbcType=DECIMAL},
+      HULFT_SEND_FLG = #{hulftSendFlg,jdbcType=DECIMAL},
+      FACE_PRICE = #{facePrice,jdbcType=DECIMAL},
+      AMOUNT = #{amount,jdbcType=DECIMAL},
+      PASS_INTEREST = #{passInterest,jdbcType=DECIMAL},
+      TAX = #{tax,jdbcType=DECIMAL},
+      BALANCE = #{balance,jdbcType=DECIMAL},
+      TRD_TAX = #{trdTax,jdbcType=DECIMAL},
+      COMMISSION_AMOUNT = #{commissionAmount,jdbcType=DECIMAL},
+      BOND_TRD_TYP = #{bondTrdTyp,jdbcType=DECIMAL},
+      TRADE_RATE = #{tradeRate,jdbcType=DECIMAL},
+      REF_PRICE = #{refPrice,jdbcType=DECIMAL},
+      REF_AMOUNT = #{refAmount,jdbcType=DECIMAL},
+      CNCL_CORR_KBN = #{cnclCorrKbn,jdbcType=DECIMAL},
+      DSCR_CD = #{dscrCd,jdbcType=CHAR},
+      APPL_DT = #{applDt,jdbcType=DATE},
+      INP_TM = #{inpTm,jdbcType=DATE},
+      RCV_NO = #{rcvNo,jdbcType=DECIMAL},
+      INPUT_ROUTE = #{inputRoute,jdbcType=DECIMAL},
+      AGENT = #{agent,jdbcType=VARCHAR},
+      EXEC_PRICE_INP_TM = #{execPriceInpTm,jdbcType=DATE},
+      EXEC_TM = #{execTm,jdbcType=DATE},
+      LATST_CNCL_CORR_KBN = #{latstCnclCorrKbn,jdbcType=DECIMAL},
+      LATST_INP_TM = #{latstInpTm,jdbcType=DATE},
+      LATST_INPUT_ROUTE = #{latstInputRoute,jdbcType=DECIMAL},
+      LATST_AGENT = #{latstAgent,jdbcType=VARCHAR},
+      HULFT_SEND_DT = #{hulftSendDt,jdbcType=DATE},
+      DATA_CD = #{dataCd,jdbcType=CHAR},
+      BRANCH_CD = #{branchCd,jdbcType=DECIMAL},
+      CLIENT_CD = #{clientCd,jdbcType=DECIMAL},
+      SALESMAN_CD = #{salesmanCd,jdbcType=DECIMAL},
+      TRADE_KBN = #{tradeKbn,jdbcType=DECIMAL},
+      SONAR_TRD_CD = #{sonarTrdCd,jdbcType=DECIMAL},
+      TRADE_DT = #{tradeDt,jdbcType=DATE},
+      VALUE_DT = #{valueDt,jdbcType=DATE},
+      NUM_CD = #{numCd,jdbcType=CHAR},
+      SONAR_DSCR_CD = #{sonarDscrCd,jdbcType=CHAR},
+      DSCR_NM = #{dscrNm,jdbcType=VARCHAR},
+      REDEMPT_DT = #{redemptDt,jdbcType=DATE},
+      COUPON = #{coupon,jdbcType=DECIMAL},
+      COUPON_KBN = #{couponKbn,jdbcType=CHAR},
+      EXEC_PRICE = #{execPrice,jdbcType=DECIMAL},
+      INSIDER_FLG = #{insiderFlg,jdbcType=DECIMAL},
+      INSIDER_DSCR_CD = #{insiderDscrCd,jdbcType=CHAR},
+      SPA_KBN = #{spaKbn,jdbcType=DECIMAL}
+    where PROC_DT = #{procDt,jdbcType=DATE}
+      and ORD_NO = #{ordNo,jdbcType=DECIMAL}
+  </update>
+</mapper>

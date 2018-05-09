@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans default-autowire="no">
+
+
+	<bean id="db01dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+		<property name="url" value="jdbc:oracle:thin:@192.168.2.40:1521/stgdb" />
+		<property name="username" value="ACCOUNT" />
+		<property name="password" value="dljora" />
+	</bean>
+
+	<bean id="db02dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+		<property name="url" value="jdbc:oracle:thin:@192.168.2.40:1521/stgdb2" />
+		<property name="username" value="ACCOUNT" />
+		<property name="password" value="dljora" />
+	</bean>
+
+	<bean id="db03dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+		<property name="url" value="jdbc:oracle:thin:@192.168.2.40:1521/stgdb3" />
+		<property name="username" value="ACCOUNT" />
+		<property name="password" value="dljora" />
+	</bean>
+
+	<bean id="db04dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+		<property name="url" value="jdbc:oracle:thin:@192.168.2.40:1521/stgdb4" />
+		<property name="username" value="ACCOUNT" />
+		<property name="password" value="dljora" />
+	</bean>
+
+	<bean id="db05dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+		<property name="url" value="jdbc:oracle:thin:@192.168.2.40:1521/stgdb5" />
+		<property name="username" value="ACCOUNT" />
+		<property name="password" value="dljora" />
+	</bean>
+
+	<bean id="db06dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+		<property name="url" value="jdbc:oracle:thin:@192.168.2.40:1521/stgdb6" />
+		<property name="username" value="ACCOUNT" />
+		<property name="password" value="dljora" />
+	</bean>
+
+	<!-- <bean id="huriwakeDataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+		<property name="url" value="jdbc:oracle:thin:@192.168.2.40:1521/stgdsdb" />
+		<property name="username" value="stgdsdb" />
+		<property name="password" value="distora" />
+	</bean> -->
+
+	 
+    <bean id="sqlSessionFactory01" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="db01dataSource"/>
+        <property name="configLocation" value="classpath:mybatis/mybatisConfigure.xml"/>
+    </bean>
+    <bean id="sqlSessionFactory02" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="db02dataSource"/>
+        <property name="configLocation" value="classpath:mybatis/mybatisConfigure.xml"/>
+    </bean>
+    <bean id="sqlSessionFactory03" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="db03dataSource"/>
+        <property name="configLocation" value="classpath:mybatis/mybatisConfigure.xml"/>
+    </bean>
+    <bean id="sqlSessionFactory04" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="db04dataSource"/>
+        <property name="configLocation" value="classpath:mybatis/mybatisConfigure.xml"/>
+    </bean>
+    <bean id="sqlSessionFactory05" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="db05dataSource"/>
+        <property name="configLocation" value="classpath:mybatis/mybatisConfigure.xml"/>
+    </bean>
+    <bean id="sqlSessionFactory06" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="db06dataSource"/>
+        <property name="configLocation" value="classpath:mybatis/mybatisConfigure.xml"/>
+    </bean>
+   <!--  <bean id="sqlSessionFactoryFORhuriwake" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="huriwakeDataSource"/>
+        <property name="configLocation" value="classpath:mybatis/mybatisConfigure.xml"/>
+        <property name="typeAliasesPackage" value="jp.co.rakuten_sec.exportfile.entity"/>
+        <property name="mapperLocations" value="classpath:mybatis/sqlmaps/*.xml"/>
+    </bean> -->
+    
+</beans>
